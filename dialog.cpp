@@ -32,7 +32,22 @@ Dialog::Dialog(QWidget *parent)
    Nazvaniye_fayla_s_neyronami_i_signalom="/home/viktor/my_projects_qt_2/bez_1_GUI_2_iz_3_neyronov/neyrons.txt"; 
 //########################################################################################################
 ////////////////////////////////////////////// загрузка нейронов и сигнала из файла в вектор   
-    
+////////////////////////////////////////////// загрузка нейронов и сигнала из файла в вектор
+
+const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
+{
+    std::ifstream file(fileName.toStdString().c_str());
+    if (file.is_open()) {
+        unsigned long long value;
+        while (file >> value) {
+            list_of_neurons.push_back(value);
+        }
+        file.close();
+    } else {
+        qDebug() << "Unable to open file: " << fileName;
+    }
+}
+//########################################################################################################      
     
     
     
