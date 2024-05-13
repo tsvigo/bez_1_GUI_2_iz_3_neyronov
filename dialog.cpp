@@ -78,37 +78,27 @@ const QString& fileName=Nazvaniye_fayla_s_neyronami_i_signalom;
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // NOTE: решение
 //////////////////////////////////////////// Solution function ////////////////////////////////////////////////////////////
-b:
-    for ( var = 100; //var < 200
-     var <(int) list_of_neurons.size()+1
-     ; ++var) // This is the range of neurons
-    {
-        for (int neuron_index = 0, synapse_index = 0;
-          neuron_index < (int)list_of_neurons.size()+1
-       // neuron_index < 198 //200
-          && 
-          /*,*/ synapse_index < (int)list_of_synapses.size()+1
-        //  10100
-          ; 
-            ++neuron_index, synapse_index = synapse_index + 100)
-        
-        {
-            list_of_neurons[var]=list_of_neurons[var] -  (list_of_neurons[neuron_index]/ list_of_synapses[synapse_index]); // + на -   
-        } // вычитаем нейроны
-    }
-    
-    for (int   neuron_index = 100, synapse_index = 10000;
-     //neuron_index < list_of_neurons.size(), 
-    neuron_index < 200; //200
-      ++neuron_index, ++synapse_index)
-    {
-        list_of_neurons[200] = list_of_neurons[200] - (list_of_neurons[neuron_index] / list_of_synapses[synapse_index]); // + на -
-    }
-//   variable_error     = 1073741824-  list_of_neurons[200] ; // WARNING: изменение
+b: list_of_neurons[1] = (list_of_neurons[0]/ list_of_synapses[0])-list_of_neurons[1];
+ list_of_neurons[2] = (list_of_neurons[1]/ list_of_synapses[1])-list_of_neurons[2];
+ 
+  variable_error     = 1073741824-  list_of_neurons[2] ; // WARNING: изменение
 //########################################################################################################      
-    
-    
-    
+  std::cout << "variable_error = " << variable_error<< std::endl;   
+     if  ( variable_error <0)
+    {
+        
+        std::cout << "Программа считает что это 1." << std::endl;
+        
+             if (list_of_synapses[variable_synapse_index_counter] < 2147483646 ) // < 2147483646 или > 1
+     {
+        list_of_synapses[variable_synapse_index_counter]  =  list_of_synapses[variable_synapse_index_counter]+1;  // +1 или -1
+       goto b;   
+     }
+   
+    }
+    else {        std::cout << "Программа считает что это не 1." << std::endl;   goto d;  }
+//########################################################################################################    
+    d: ;;
     
     
     
